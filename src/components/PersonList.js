@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { SearchIcon} from '@chakra-ui/icons'
 import { connect } from 'react-redux'
 import { getPerson, removePerson } from '../redux/personActions'
-import { Flex, Box, Button, Input } from '@chakra-ui/react'
+import { Flex, Box, IconButton, Input } from '@chakra-ui/react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/search.css'
 import ListPerson from './ListPerson'
@@ -43,10 +44,18 @@ function PersonList({ person, removePerson }) {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Flex h="900px" w="1500px" alignItems="center" borderColor="black">
-        <Box maxW="sm" borderWidth="1px" overflow="hidden" borderColor="black">
-          <Flex>
-            <Box maxW="sm" borderColor="black">
-              <h1 className="text-font">Kişi Listesi</h1>
+        <Box
+          maxW="sm"
+          borderWidth="1px"
+          overflow="hidden"
+          borderColor="black"
+          borderRadius="lg"
+        >
+          <Flex className="text-font">
+            <Box maxW="sm" borderColor="black" float="left">
+              <div>
+                <h1 className="text-font">Kişi Listesi</h1>
+              </div>
             </Box>
           </Flex>
 
@@ -56,7 +65,9 @@ function PersonList({ person, removePerson }) {
                 <Box>
                   <Input
                     placeholder="Ad Soyad"
-                    w="220px"
+                    paddingLeft="20px"
+                    marginLeft="10px"
+                    w="280px"
                     h="50px"
                     onChange={(e) =>
                       setSearhInput(e.target.value.toUpperCase())
@@ -64,15 +75,16 @@ function PersonList({ person, removePerson }) {
                   />
                 </Box>
                 <Box>
-                  <Button
-                    w="150px"
+                  <IconButton 
+                  icon={<SearchIcon />}
+                    w="60px"
                     h="50px"
                     colorScheme="blue"
                     marginLeft="5px"
                     onClick={searchItem}
                   >
                     Ara
-                  </Button>
+                  </IconButton>
                 </Box>
               </Flex>
             </Box>
