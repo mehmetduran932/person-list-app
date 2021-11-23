@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getPerson, removePerson } from '../redux/personActions'
-import { Flex, Box, Button, Divider, Center, Input } from '@chakra-ui/react'
+import { Flex, Box, Button, Input } from '@chakra-ui/react'
 import Search from './Search'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/search.css'
+import ListPerson from './ListPerson'
 
 function PersonList({ person, removePerson }) {
   const [searchInput, setSearhInput] = useState('')
@@ -50,9 +51,6 @@ function PersonList({ person, removePerson }) {
             </Box>
           </Flex>
 
-          <Center height="1px">
-            <Divider orientation="horizontal" color="black" />
-          </Center>
           <Flex marginTop="1px">
             <Box w="600px" h="70px" borderColor="black" marginTop="15px">
               <Flex marginTop="10px">
@@ -90,22 +88,13 @@ function PersonList({ person, removePerson }) {
                 float: 'right'
               }}
             >
-              {users.map((p) => (
-                <Flex borderWidth="2px" marginTop="5px" borderColor="black">
-                  <Box p="4" bg="white.400" textAlign="left">
-                    <h1>Ad Soyad: {p.name}</h1>
-                    <h1>Telefon Numarası: {p.phone}</h1>
-                    <h1>E-mail: {p.email}</h1>
-                    <Button
-                      w="350px"
-                      colorScheme="red"
-                      onClick={() => removeItem(p)}
-                    >
-                      Kişiyi Sil
-                    </Button>
-                  </Box>
-                </Flex>
-              ))}
+              <ListPerson
+                name={users.name}
+                email={users.email}
+                phone={users.phone}
+                removeItem={removeItem}
+                users={users}
+              />
             </Scrollbars>
           </Box>
         </Box>
