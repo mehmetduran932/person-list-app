@@ -1,29 +1,28 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { getPerson, removePerson } from "../redux/personActions";
-import { Flex, Box, Button, Divider, Center } from "@chakra-ui/react";
-import Search from "./Search";
-import { Scrollbars } from "react-custom-scrollbars";
-import "../../src/search.css";
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { getPerson, removePerson } from '../redux/personActions'
+import { Flex, Box, Button, Divider, Center } from '@chakra-ui/react'
+import Search from './Search'
+import { Scrollbars } from 'react-custom-scrollbars'
+import '../../src/search.css'
 
 function PersonList({ person, removePerson }) {
-  console.log(person);
-  useEffect(() => {}, [person]);
+  console.log(person)
+  useEffect(() => {}, [person])
 
   const removeItem = (listItem) => {
-    let filtered = [];
-    filtered = person.filter((item) => item !== listItem);
-    removePerson(filtered);
-  };
+    let filtered = []
+    filtered = person.filter((item) => item !== listItem)
+    removePerson(filtered)
+  }
+  const searchItem = (item) => {}
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Flex h="900px" w="1500px" alignItems="center" borderColor="black">
         <Box maxW="sm" borderWidth="1px" overflow="hidden" borderColor="black">
           <Flex>
             <Box maxW="sm" borderColor="black">
-              <div className="h1-yasla">
-                <h1 className="text-font">Kişi Listesi</h1>
-              </div>
+              <h1 className="text-font">Kişi Listesi</h1>
             </Box>
           </Flex>
 
@@ -41,8 +40,8 @@ function PersonList({ person, removePerson }) {
               style={{
                 width: 380,
                 height: 700,
-                color: "black",
-                float: "right",
+                color: 'black',
+                float: 'right'
               }}
             >
               {person.map((p) => (
@@ -66,13 +65,11 @@ function PersonList({ person, removePerson }) {
         </Box>
       </Flex>
     </div>
-  );
+  )
 }
 const mapStateToProps = (state) => {
   return {
-    person: state.person,
-  };
-};
-export default connect(mapStateToProps, { getPerson, removePerson })(
-  PersonList
-);
+    person: state.person
+  }
+}
+export default connect(mapStateToProps, { getPerson, removePerson })(PersonList)
