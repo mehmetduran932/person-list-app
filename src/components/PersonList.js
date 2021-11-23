@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getPerson, removePerson } from "../redux/personActions";
-import { Flex, Box, Button } from "@chakra-ui/react";
+import { Flex, Box, Button, Spinner } from "@chakra-ui/react";
 import Search from "./Search";
 import { Scrollbars } from "react-custom-scrollbars";
 
@@ -16,22 +16,16 @@ function PersonList({ person, removePerson }) {
   };
   return (
     <div>
-      <Flex h="900px" w="1500px" alignItems="center">
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-          <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Flex h="900px" w="1500px" alignItems="center" borderColor="black">
+        <Box maxW="sm" borderWidth="1px" overflow="hidden" borderColor="black">
+          <Box maxW="sm" borderColor="black" marginTop="15px">
             <h1>Kişi Listesi</h1>
           </Box>
-          <Box w="600px">
+          <Box w="600px" h="70px" borderWidth="1px" borderColor="black">
             <Search />
           </Box>
 
-          <Box
-            maxW="sm"
-            borderWidth="1px"
-            borderRadius="lg"
-            overflow="hidden"
-            alignItems="center"
-          >
+          <Box maxW="sm" overflow="hidden" alignItems="center">
             <Scrollbars
               style={{
                 width: 380,
@@ -41,7 +35,7 @@ function PersonList({ person, removePerson }) {
               }}
             >
               {person.map((p) => (
-                <Flex>
+                <Flex borderWidth="2px" marginTop="5px" borderColor="black">
                   <Box p="4" bg="white.400" textAlign="left">
                     <h1>Ad Soyad: {p.name}</h1>
                     <h1>Telefon Numarası: {p.phone}</h1>

@@ -4,7 +4,7 @@ import "../../src/search.css";
 export default function Search() {
   return (
     <div>
-      <Flex>
+      <Flex marginTop="10px">
         <Box>
           <Input placeholder="Ad Soyad" w="220px" h="50px" />
         </Box>
