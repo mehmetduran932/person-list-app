@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getPerson, removePerson } from "../redux/personActions";
-import { Flex, Box, Button, Spinner } from "@chakra-ui/react";
+import { Flex, Box, Button, Divider, Center } from "@chakra-ui/react";
 import Search from "./Search";
 import { Scrollbars } from "react-custom-scrollbars";
+import "../../src/search.css";
 
 function PersonList({ person, removePerson }) {
   console.log(person);
@@ -18,14 +19,24 @@ function PersonList({ person, removePerson }) {
     <div>
       <Flex h="900px" w="1500px" alignItems="center" borderColor="black">
         <Box maxW="sm" borderWidth="1px" overflow="hidden" borderColor="black">
-          <Box maxW="sm" borderColor="black" marginTop="15px">
-            <h1>Kişi Listesi</h1>
-          </Box>
-          <Box w="600px" h="70px" borderWidth="1px" borderColor="black">
-            <Search />
-          </Box>
+          <Flex>
+            <Box maxW="sm" borderColor="black">
+              <div className="h1-yasla">
+                <h1 className="text-font">Kişi Listesi</h1>
+              </div>
+            </Box>
+          </Flex>
 
-          <Box maxW="sm" overflow="hidden" alignItems="center">
+          <Center height="1px">
+            <Divider orientation="horizontal" color="black" />
+          </Center>
+          <Flex marginTop="1px">
+            <Box w="600px" h="70px" borderColor="black" marginTop="15px">
+              <Search />
+            </Box>
+          </Flex>
+
+          <Box maxW="sm" overflow="hidden" alignItems="center" marginTop="15px">
             <Scrollbars
               style={{
                 width: 380,
