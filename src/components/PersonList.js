@@ -1,21 +1,45 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getPerson, removePerson } from '../redux/personActions'
-import { Flex, Box, Button, Divider, Center } from '@chakra-ui/react'
+import { Flex, Box, Button, Divider, Center, Input } from '@chakra-ui/react'
 import Search from './Search'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/search.css'
 
 function PersonList({ person, removePerson }) {
-  console.log(person)
-  useEffect(() => {}, [person])
+  const [searchInput, setSearhInput] = useState('')
+  const [users, setUsers] = useState([])
+  useEffect(() => {
+    if (person) {
+      setUsers(person)
+    }
+  }, [person])
 
   const removeItem = (listItem) => {
     let filtered = []
     filtered = person.filter((item) => item !== listItem)
     removePerson(filtered)
   }
-  const searchItem = (item) => {}
+  const searchItem = () => {
+    if (searchInput.length === 0) {
+      setUsers(person)
+    } else {
+      if (users?.length > 0) {
+        const filtered = person.filter((user) =>
+          user.name.toUpperCase().includes(searchInput)
+        )
+        setUsers(filtered)
+        console.log(filtered)
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (searchInput.length === 0) {
+      setUsers(person)
+    }
+  }, [searchInput])
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Flex h="900px" w="1500px" alignItems="center" borderColor="black">
@@ -31,7 +55,29 @@ function PersonList({ person, removePerson }) {
           </Center>
           <Flex marginTop="1px">
             <Box w="600px" h="70px" borderColor="black" marginTop="15px">
-              <Search />
+              <Flex marginTop="10px">
+                <Box>
+                  <Input
+                    placeholder="Ad Soyad"
+                    w="220px"
+                    h="50px"
+                    onChange={(e) =>
+                      setSearhInput(e.target.value.toUpperCase())
+                    }
+                  />
+                </Box>
+                <Box>
+                  <Button
+                    w="150px"
+                    h="50px"
+                    colorScheme="blue"
+                    marginLeft="5px"
+                    onClick={searchItem}
+                  >
+                    Ara
+                  </Button>
+                </Box>
+              </Flex>
             </Box>
           </Flex>
 
@@ -44,7 +90,7 @@ function PersonList({ person, removePerson }) {
                 float: 'right'
               }}
             >
-              {person.map((p) => (
+              {users.map((p) => (
                 <Flex borderWidth="2px" marginTop="5px" borderColor="black">
                   <Box p="4" bg="white.400" textAlign="left">
                     <h1>Ad Soyad: {p.name}</h1>

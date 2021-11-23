@@ -6,7 +6,7 @@ export default function Search() {
     <div>
       <Flex marginTop="10px">
         <Box>
-          <Input placeholder="Ad Soyad" w="220px" h="50px" />
+          <Input placeholder="Ad Soyad" w="220px" h="50px"/>
         </Box>
         <Box>
           <Button w="150px" h="50px" colorScheme="blue" marginLeft="5px">
