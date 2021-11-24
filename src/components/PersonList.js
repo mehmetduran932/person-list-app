@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { SearchIcon} from '@chakra-ui/icons'
 import { connect } from 'react-redux'
 import { getPerson, removePerson } from '../redux/personActions'
-import { Flex, Box, IconButton, Input } from '@chakra-ui/react'
+import {
+  Flex,
+  Box,
+  IconButton,
+  Input,
+  Heading,
+  useToast
+} from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/search.css'
 import ListPerson from './ListPerson'
@@ -10,6 +17,7 @@ import ListPerson from './ListPerson'
 function PersonList({ person, removePerson }) {
   const [searchInput, setSearhInput] = useState('')
   const [users, setUsers] = useState([])
+  const toast = useToast()
   useEffect(() => {
     if (person) {
       setUsers(person)
@@ -20,6 +28,12 @@ function PersonList({ person, removePerson }) {
     let filtered = []
     filtered = person.filter((item) => item !== listItem)
     removePerson(filtered)
+    toast({
+      description: 'Person Deleted',
+      status: 'error',
+      duration: 9000,
+      isClosable: true
+    })
   }
   const searchItem = () => {
     if (searchInput.length === 0) {
@@ -53,9 +67,9 @@ function PersonList({ person, removePerson }) {
         >
           <Flex className="text-font">
             <Box maxW="sm" borderColor="black" float="left">
-              <div>
-                <h1 className="text-font">Kişi Listesi</h1>
-              </div>
+              <Heading size="lg" fontSize="35px">
+                Kişi Listesi
+              </Heading>
             </Box>
           </Flex>
 
@@ -75,8 +89,8 @@ function PersonList({ person, removePerson }) {
                   />
                 </Box>
                 <Box>
-                  <IconButton 
-                  icon={<SearchIcon />}
+                  <IconButton
+                    icon={<SearchIcon />}
                     w="60px"
                     h="50px"
                     colorScheme="blue"
