@@ -17,13 +17,13 @@ import ListPerson from './ListPerson'
 function PersonList({ person, removePerson }) {
   const [searchInput, setSearhInput] = useState('')
   const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
   const toast = useToast()
   useEffect(() => {
     if (person) {
       setUsers(person)
     }
   }, [person])
-
   const removeItem = (listItem) => {
     let filtered = []
     filtered = person.filter((item) => item !== listItem)
@@ -49,12 +49,21 @@ function PersonList({ person, removePerson }) {
       }
     }
   }
-
   useEffect(() => {
     if (searchInput.length === 0) {
       setUsers(person)
     }
+
+    setLoading(false)
   }, [searchInput])
+
+  function re() {
+    setLoading(true)
+    setInterval(function () {
+      setLoading(false)
+    }, 1000)
+    console.log(loading)
+  }
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -63,12 +72,17 @@ function PersonList({ person, removePerson }) {
           maxW="sm"
           borderWidth="1px"
           overflow="hidden"
-          borderColor="black"
+          borderColor="#61dafb"
           borderRadius="lg"
         >
           <Flex className="text-font">
             <Box maxW="sm" borderColor="black" float="left">
-              <Heading size="lg" fontSize="35px">
+              <Heading
+                className="heading"
+                size="lg"
+                fontSize="35px"
+                onClick={() => re()}
+              >
                 Kişi Listesi
               </Heading>
             </Box>
@@ -120,6 +134,7 @@ function PersonList({ person, removePerson }) {
                 phone={users.phone}
                 removeItem={removeItem}
                 users={users}
+                loading={loading}
               />
             </Scrollbars>
           </Box>
