@@ -48,7 +48,6 @@ function PersonList({ person, removePerson }) {
           user.name.toUpperCase().includes(searchInput)
         )
         setUsers(filtered)
-        console.log(filtered)
       }
     }
   }
@@ -63,7 +62,6 @@ function PersonList({ person, removePerson }) {
     setInterval(function () {
       setLoading(false)
     }, 1000)
-    console.log(loading)
   }
 
   return (
