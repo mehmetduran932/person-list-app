@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getPerson, removePerson } from '../redux/personActions'
-import {
-  Flex,
-  Box,
-  IconButton,
-  Input,
-  Heading,
-  useToast
-} from '@chakra-ui/react'
-import { SearchIcon } from '@chakra-ui/icons'
+import { Flex, Box, Heading, useToast } from '@chakra-ui/react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/style.css'
 import PersonCart from './PersonCart'
+import Search from './Search'
 
 function PersonList({ person, removePerson }) {
   const [searchInput, setSearchInput] = useState('')
@@ -65,7 +58,10 @@ function PersonList({ person, removePerson }) {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }} className="ust-bosluk">
+    <div
+      style={{ display: 'flex', justifyContent: 'center' }}
+      className="ust-bosluk"
+    >
       <Flex h="100%" w="100%" alignItems="center" borderColor="black">
         <Box
           maxW="sm"
@@ -89,34 +85,11 @@ function PersonList({ person, removePerson }) {
 
           <Flex marginTop="1px">
             <Box w="100%" h="100%" borderColor="black" marginTop="15px">
-              <Flex marginTop="10px">
-                <Box>
-                  <Input
-                    placeholder="Ad Soyad"
-                    paddingLeft="20px"
-                    marginLeft="10px"
-                    w="280px"
-                    h="50px"
-                    value={searchInput}
-                    onChange={(e) =>
-                      setSearchInput(e.target.value.toUpperCase())
-                    }
-                  />
-                </Box>
-                <Box>
-                  <IconButton
-                    icon={<SearchIcon />}
-                    w="60px"
-                    h="50px"
-                    colorScheme="blue"
-                    marginLeft="5px"
-                    onClick={searchItem}
-                    className=".btn"
-                  >
-                    Ara
-                  </IconButton>
-                </Box>
-              </Flex>
+              <Search
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+                searchItem={searchItem}
+              />
             </Box>
           </Flex>
 
