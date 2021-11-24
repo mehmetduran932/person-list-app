@@ -9,7 +9,6 @@ export default function PersonCart({
   phone,
   users
 }) {
-  console.log(phone)
   return (
     <>
       {loading ? (
