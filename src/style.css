@@ -1,7 +1,7 @@
-.ust-bosluk {
+.top-space {
   margin-top: 30px;
 }
-.sola-yasla {
+.left-justify {
   float: left;
 }
 .text-font {
@@ -11,7 +11,7 @@
   text-align: left;
   margin-top: 20px;
 }
-.h1-yasla {
+.h1-justify {
   float: left;
 }
 div {
@@ -22,16 +22,15 @@ div {
   body {
     width: 50%;
   }
-  .ust-bosluk {
+  .top-space {
     margin-top: 0px;
   }
 }
 @media (max-width: 500px) {
   body {
     width: 100%;
-    
   }
-  .ust-bosluk {
+  .top-space {
     margin-top: 0px;
   }
 }
@@ -39,9 +38,8 @@ div {
   body {
     display: flex;
     width: 100%;
-   
   }
-  .ust-bosluk {
+  .top-space {
     margin-top: 0px;
   }
 }

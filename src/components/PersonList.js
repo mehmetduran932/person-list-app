@@ -23,7 +23,7 @@ function PersonList({ person, removePerson }) {
     filtered = person.filter((item) => item !== listItem)
     removePerson(filtered)
     toast({
-      description: 'Person Deleted',
+      description: 'Kişi Silindi',
       status: 'error',
       duration: 9000,
       position: 'top-right',
@@ -60,7 +60,7 @@ function PersonList({ person, removePerson }) {
   return (
     <div
       style={{ display: 'flex', justifyContent: 'center' }}
-      className="ust-bosluk"
+      className="top-space"
     >
       <Flex h="100%" w="100%" alignItems="center" borderColor="black">
         <Box
@@ -97,19 +97,22 @@ function PersonList({ person, removePerson }) {
             <Scrollbars
               style={{
                 width: 382,
-                height: 700,
+                height: '25em',
                 color: 'black',
                 float: 'right'
               }}
             >
-              <PersonCart
-                name={users.name}
-                email={users.email}
-                phone={users.phone}
-                removeItem={removeItem}
-                users={users}
-                loading={loading}
-              />
+              {users.map((user, index) => (
+                <PersonCart
+                  name={user.name}
+                  email={user.email}
+                  phone={user.phone}
+                  removeItem={removeItem}
+                  users={user}
+                  loading={loading}
+                  key={index}
+                />
+              ))}
             </Scrollbars>
           </Box>
         </Box>
