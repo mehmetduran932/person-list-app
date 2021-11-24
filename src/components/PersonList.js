@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
-import '../../src/search.css'
+import '../../src/style.css'
 import PersonCart from './PersonCart'
 
 function PersonList({ person, removePerson }) {
@@ -65,8 +65,8 @@ function PersonList({ person, removePerson }) {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <Flex h="900px" w="1500px" alignItems="center" borderColor="black">
+    <div style={{ display: 'flex', justifyContent: 'center' }} className="ust-bosluk">
+      <Flex h="100%" w="100%" alignItems="center" borderColor="black">
         <Box
           maxW="sm"
           borderWidth="1px"
@@ -88,7 +88,7 @@ function PersonList({ person, removePerson }) {
           </Flex>
 
           <Flex marginTop="1px">
-            <Box w="600px" h="70px" borderColor="black" marginTop="15px">
+            <Box w="100%" h="100%" borderColor="black" marginTop="15px">
               <Flex marginTop="10px">
                 <Box>
                   <Input
@@ -119,10 +119,10 @@ function PersonList({ person, removePerson }) {
             </Box>
           </Flex>
 
-          <Box maxW="sm" overflow="hidden" alignItems="center" marginTop="15px">
+          <Box w="100%" overflow="hidden" alignItems="center" marginTop="15px">
             <Scrollbars
               style={{
-                width: 380,
+                width: 382,
                 height: 700,
                 color: 'black',
                 float: 'right'
