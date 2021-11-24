@@ -75,7 +75,7 @@ function PersonList({ person, removePerson }) {
           borderRadius="lg"
         >
           <Flex className="text-font">
-            <Box maxW="sm" borderColor="black" float="left">
+            <Box maxW="sm" float="left">
               <Heading
                 className="heading"
                 size="lg"
@@ -111,6 +111,7 @@ function PersonList({ person, removePerson }) {
                     colorScheme="blue"
                     marginLeft="5px"
                     onClick={searchItem}
+                    className=".btn"
                   >
                     Ara
                   </IconButton>
