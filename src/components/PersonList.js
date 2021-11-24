@@ -12,16 +12,17 @@ import {
 import { SearchIcon } from '@chakra-ui/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/search.css'
-import ListPerson from './ListPerson'
+import PersonCart from './PersonCart'
 
 function PersonList({ person, removePerson }) {
-  const [searchInput, setSearhInput] = useState('')
+  const [searchInput, setSearchInput] = useState('')
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
   const toast = useToast()
   useEffect(() => {
     if (person) {
       setUsers(person)
+      setLoading(false)
     }
   }, [person])
   const removeItem = (listItem) => {
@@ -35,10 +36,12 @@ function PersonList({ person, removePerson }) {
       position: 'top-right',
       isClosable: true
     })
+    setSearchInput('')
   }
   const searchItem = () => {
     if (searchInput.length === 0) {
       setUsers(person)
+      setSearchInput('')
     } else {
       if (users?.length > 0) {
         const filtered = person.filter((user) =>
@@ -53,8 +56,6 @@ function PersonList({ person, removePerson }) {
     if (searchInput.length === 0) {
       setUsers(person)
     }
-
-    setLoading(false)
   }, [searchInput])
 
   function re() {
@@ -98,8 +99,9 @@ function PersonList({ person, removePerson }) {
                     marginLeft="10px"
                     w="280px"
                     h="50px"
+                    value={searchInput}
                     onChange={(e) =>
-                      setSearhInput(e.target.value.toUpperCase())
+                      setSearchInput(e.target.value.toUpperCase())
                     }
                   />
                 </Box>
@@ -128,7 +130,7 @@ function PersonList({ person, removePerson }) {
                 float: 'right'
               }}
             >
-              <ListPerson
+              <PersonCart
                 name={users.name}
                 email={users.email}
                 phone={users.phone}

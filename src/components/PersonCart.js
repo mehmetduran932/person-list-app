@@ -1,8 +1,7 @@
 import React from 'react'
 import { Flex, Box, Button, Spinner } from '@chakra-ui/react'
 
-export default function ListPerson({ users, removeItem, loading }) {
-  console.log(loading)
+export default function PersonCart({ users, removeItem, loading }) {
   return (
     <>
       {loading ? (
@@ -11,7 +10,7 @@ export default function ListPerson({ users, removeItem, loading }) {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="blue.500"
+            color="#61dafb"
             size="xl"
           />
         </div>
