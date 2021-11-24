@@ -11,18 +11,7 @@ export default function PersonCart({
 }) {
   return (
     <>
-      {loading ? (
-        <div>
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="#61dafb"
-            size="xl"
-            key={phone}
-          />
-        </div>
-      ) : (
+ 
         <div>
           <Flex marginTop="5px">
             <Box
@@ -46,7 +35,7 @@ export default function PersonCart({
             </Box>
           </Flex>
         </div>
-      )}
+      
     </>
   )
 }

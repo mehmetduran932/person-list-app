@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getPerson, removePerson } from '../redux/personActions'
-import { Flex, Box, Heading, useToast } from '@chakra-ui/react'
+import { Flex, Box, Heading, useToast,Spinner } from '@chakra-ui/react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import '../../src/style.css'
 import PersonCart from './PersonCart'
@@ -97,22 +97,35 @@ function PersonList({ person, removePerson }) {
             <Scrollbars
               style={{
                 width: 382,
-                height: '25em',
+                height: '35em',
                 color: 'black',
                 float: 'right'
               }}
             >
-              {users.map((user, index) => (
-                <PersonCart
-                  name={user.name}
-                  email={user.email}
-                  phone={user.phone}
-                  removeItem={removeItem}
-                  users={user}
-                  loading={loading}
-                  key={index}
-                />
-              ))}
+              {' '}
+              {loading ? (
+                <div className="spin-center">
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="#61dafb"
+                    size="xl"
+                  />
+                </div>
+              ) : (
+                users.map((user, index) => (
+                  <PersonCart
+                    name={user.name}
+                    email={user.email}
+                    phone={user.phone}
+                    removeItem={removeItem}
+                    users={user}
+                    loading={loading}
+                    key={index}
+                  />
+                ))
+              )}
             </Scrollbars>
           </Box>
         </Box>
