@@ -102,7 +102,6 @@ function PersonList({ person, removePerson }) {
                 float: 'right'
               }}
             >
-              {' '}
               {loading ? (
                 <div className="spin-center">
                   <Spinner
