@@ -32,6 +32,7 @@ function PersonList({ person, removePerson }) {
       description: 'Person Deleted',
       status: 'error',
       duration: 9000,
+      position: 'top-right',
       isClosable: true
     })
   }
